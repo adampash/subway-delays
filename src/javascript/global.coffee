@@ -83,12 +83,15 @@ window.BarChart =
     operations = _.keys(DATA[0])
     operations.shift()
 
+    operations = operations.sort (a, b) ->
+      a.indexOf('2013') < b.indexOf('2013')
+
     for operation in operations
       display_operation = operation
                     .toLowerCase()
-                    .replace("inpatient", "(in)")
-                    .replace("outpatient", "(out)")
-                    .replace("with ", "w/")
+                    # .replace("inpatient", "(in)")
+                    # .replace("outpatient", "(out)")
+                    # .replace("with ", "w/")
       $('.operations').append """
         <div class="operation" data-op="#{operation}">
          #{display_operation}
@@ -107,4 +110,4 @@ window.BarChart =
 
 
 BarChart.showOperations()
-BarChart.renderGraph("How Often It Was Late In 2014 By Wait Assessment (%)")
+BarChart.renderGraph("How Often It Was Late In 2014 By Wait Assessment")
