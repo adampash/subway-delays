@@ -22,7 +22,7 @@ window.BarChart =
     @init()
     X_DATA = @getXData(key)
     x = d3.scale.linear()
-          .domain([0, d3.max(X_DATA)])
+          .domain([0, 60])
           .range([0, @width])
 
     @chart = d3.select(".chart")
@@ -58,7 +58,7 @@ window.BarChart =
     $('h2.operation').text(key.replace(/with /i, 'w/'))
     X_DATA = @getXData(key)
     x = d3.scale.linear()
-          .domain([0, d3.max(X_DATA)])
+          .domain([0, 60])
           .range([0, @width])
 
     @chart.attr("height", @barHeight * X_DATA.length)
