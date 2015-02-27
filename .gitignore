@@ -1,0 +1,6 @@
+.DS_Store
+.sass-cache
+Desktop.ini
+node_modules
+src/specs/compiled_js
+coverage
