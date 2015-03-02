@@ -110,4 +110,4 @@ window.BarChart =
 
 
 BarChart.showOperations()
-BarChart.renderGraph("How Often It Was Late In 2014 By Wait Assessment")
+BarChart.renderGraph("How Often It Was Late In 2013 By Wait Assessment")
