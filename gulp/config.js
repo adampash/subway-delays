@@ -44,13 +44,7 @@ module.exports = {
       // Additional file extentions to make optional
       extensions: ['.coffee', '.hbs'],
       // list of modules to make require-able externally
-      require: ['jquery', 'underscore']
-    }, {
-      entries: src + '/javascript/page.js',
-      dest: dest,
-      outputName: 'page.js',
-      // list of externally available modules to exclude from the bundle
-      external: ['jquery', 'underscore']
+      require: ['jquery', 'node_modules/underscore']
     }]
   },
   production: {
