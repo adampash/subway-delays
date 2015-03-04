@@ -38,6 +38,7 @@ window.BarChart =
         # .attr('width', x)
         .attr('width', (d) => x(@clean_num d[key]))
         .attr('height', @barHeight - 3)
+        .style('fill', (d) -> d["Color"])
 
     @bar.append("text")
         .attr("x", (d) =>
@@ -83,18 +84,17 @@ window.BarChart =
     operations = _.keys(DATA[0])
     operations.shift()
 
-    operations = operations.sort (a, b) ->
-      a.indexOf('2013') < b.indexOf('2013')
-
     for operation in operations
+      break if operation is "Color"
       display_operation = operation
                     .toLowerCase()
                     # .replace("inpatient", "(in)")
                     # .replace("outpatient", "(out)")
                     # .replace("with ", "w/")
+      year = display_operation.match(/\d{4}/)[0]
       $('.operations').append """
         <div class="operation" data-op="#{operation}">
-         #{display_operation}
+         #{display_operation.split(/by/)[1]} in #{year}
         </div>
       """
 
@@ -110,4 +110,4 @@ window.BarChart =
 
 
 BarChart.showOperations()
-BarChart.renderGraph("How Often It Was Late In 2013 By Wait Assessment")
+BarChart.renderGraph("How Often Trains Were Late In 2011 By Wait Assessment")
