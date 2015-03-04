@@ -84,8 +84,17 @@ window.BarChart =
     operations = _.keys(DATA[0])
     operations.shift()
 
+    index = 0
     for operation in operations
       break if operation is "Color"
+      if index is 0
+        $('.operations').append """
+          <h4>How often trains were late by wait assessment:</h4>
+        """
+      else if index is 4
+        $('.operations').append """
+          <h4>How often trains were late by terminal delay:</h4>
+        """
       display_operation = operation
                     .toLowerCase()
                     # .replace("inpatient", "(in)")
@@ -94,9 +103,10 @@ window.BarChart =
       year = display_operation.match(/\d{4}/)[0]
       $('.operations').append """
         <div class="operation" data-op="#{operation}">
-         #{display_operation.split(/by/)[1]} in #{year}
+         #{year}
         </div>
       """
+      index++
 
     $('div.operation').first().addClass('selected')
 
